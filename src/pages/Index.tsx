@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScotlandHero from "@/components/ScotlandHero";
 import ItinerarySection from "@/components/ItinerarySection";
-import TipsModal from "@/components/TipsModal";
+import FoodAndActivitiesSection from "@/components/FoodAndActivitiesSection";
 import ScotlandFooter from "@/components/ScotlandFooter";
+import TipsModal from "@/components/TipsModal";
 import { itinerary7Days, itinerary9Days, itinerary11Days } from "@/data/itineraries";
 
 const Index = () => {
@@ -31,14 +32,14 @@ const Index = () => {
   // Handle scroll events for section visibility with improved logic
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "itinerary7", "itinerary9", "itinerary11"];
+      const sections = ["hero", "itinerary7", "itinerary9", "itinerary11", "food-activities"];
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
       // Check if we're near the bottom of the page
       if (scrollPosition + windowHeight >= documentHeight - 100) {
-        setCurrentSection("itinerary11");
+        setCurrentSection("food-activities");
         return;
       }
 
@@ -127,6 +128,9 @@ const Index = () => {
             isVisible={currentSection === "itinerary11"}
           />
         </motion.div>
+        
+        {/* Food and Activities Section */}
+        <FoodAndActivitiesSection />
       </main>
 
       {/* Footer */}

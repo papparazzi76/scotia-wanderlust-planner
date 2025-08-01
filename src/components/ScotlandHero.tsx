@@ -121,9 +121,17 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
           </Button>
           
           <Button 
+            onClick={() => onNavigate("food-activities")}
+            variant="outline"
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-cinzel transition-celtic w-full sm:w-auto"
+          >
+            Gastronomía Local
+          </Button>
+          
+          <Button 
             variant="outline"
             onClick={() => onNavigate("tips")}
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-cinzel transition-celtic w-full sm:w-auto"
+            className="border-muted-foreground text-muted-foreground hover:bg-muted hover:text-foreground px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-cinzel transition-celtic w-full sm:w-auto"
           >
             Consejos de Viaje
           </Button>
