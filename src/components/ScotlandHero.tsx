@@ -55,12 +55,12 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
 
       {/* Navigation */}
       <motion.nav 
-        className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute top-4 sm:top-8 left-1/2 transform -translate-x-1/2 z-10 px-4"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
-        <div className="flex gap-4 bg-card/20 backdrop-blur-md rounded-full p-2 shadow-highland">
+        <div className="flex gap-2 sm:gap-4 bg-card/20 backdrop-blur-md rounded-full p-1 sm:p-2 shadow-highland">
           {[
             { id: "itinerary7", label: "7 Días", icon: "7" },
             { id: "itinerary9", label: "9 Días", icon: "9" },
@@ -75,10 +75,10 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
               <Button 
                 variant="ghost" 
                 onClick={() => onNavigate(item.id)}
-                className="relative px-6 py-3 text-foreground hover:text-primary-foreground hover:bg-primary/80 transition-celtic group highland-glow"
+                className="relative px-3 py-2 sm:px-6 sm:py-3 text-foreground hover:text-primary-foreground hover:bg-primary/80 transition-celtic group highland-glow"
               >
-                <span className="font-cinzel font-semibold text-lg">{item.icon}</span>
-                <span className="ml-2 font-inter">{item.label}</span>
+                <span className="font-cinzel font-semibold text-sm sm:text-lg">{item.icon}</span>
+                <span className="ml-1 sm:ml-2 font-inter text-xs sm:text-base">{item.label}</span>
               </Button>
             </motion.div>
           ))}
@@ -86,19 +86,19 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
       </motion.nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <h1 className="font-celtic text-6xl md:text-8xl lg:text-9xl text-transparent bg-highland bg-clip-text mb-6 shadow-glow">
+          <h1 className="font-celtic text-4xl sm:text-5xl md:text-8xl lg:text-9xl text-transparent bg-highland bg-clip-text mb-4 sm:mb-6 shadow-glow leading-tight">
             Escocia Eterna
           </h1>
         </motion.div>
 
         <motion.p
-          className="font-cinzel text-2xl md:text-3xl text-accent mb-12 drop-shadow-lg"
+          className="font-cinzel text-lg sm:text-xl md:text-3xl text-accent mb-8 sm:mb-12 drop-shadow-lg px-2 leading-relaxed"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -107,23 +107,23 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
         </motion.p>
 
         <motion.div
-          className="flex flex-col md:flex-row gap-6 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <Button 
             onClick={() => onNavigate("itinerary7")}
-            className="bg-highland hover:bg-highland/80 text-primary-foreground px-8 py-4 text-lg font-cinzel shadow-highland transition-celtic group"
+            className="bg-highland hover:bg-highland/80 text-primary-foreground px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-cinzel shadow-highland transition-celtic group w-full sm:w-auto"
           >
-            <MapPin className="mr-2 h-5 w-5 group-hover:scale-110 transition-celtic" />
+            <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-celtic" />
             Comenzar Aventura
           </Button>
           
           <Button 
             variant="outline"
             onClick={() => onNavigate("tips")}
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-4 text-lg font-cinzel transition-celtic"
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-cinzel transition-celtic w-full sm:w-auto"
           >
             Consejos de Viaje
           </Button>
