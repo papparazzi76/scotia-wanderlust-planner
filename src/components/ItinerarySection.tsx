@@ -164,7 +164,9 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                           ? "/lovable-uploads/94b4d4d1-b283-4052-a68d-66aa7ee9a596.png" // Edinburgh street for day 1
                         : (itinerary === "7" && index === 1) 
                           ? "/lovable-uploads/64df368e-4b7a-4ceb-b7ce-5c2a689f7dc3.png" // Castle illuminated for day 2
-                        : (itinerary === "7" && index === 5) 
+                        : (itinerary === "7" && index === 2) 
+                          ? "/lovable-uploads/85f6e7bb-c096-40f6-95bf-8cb54f1abc5f.png" // River landscape for day 3
+                        : (itinerary === "7" && index === 5)
                           ? "/lovable-uploads/4fc63d11-cc21-4955-b981-c902ab20b663.png" // Old Man of Storr for day 6
                         : (itinerary === "7" && index === 4) ||
                           (itinerary === "9" && (index === 5 || index === 6)) ||
