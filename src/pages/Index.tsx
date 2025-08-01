@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScotlandHero from "@/components/ScotlandHero";
@@ -7,7 +8,7 @@ import ScotlandFooter from "@/components/ScotlandFooter";
 import { itinerary7Days, itinerary9Days, itinerary11Days } from "@/data/itineraries";
 
 const Index = () => {
-  const [currentSection, setCurrentSection] = useState<string>("");
+  const [currentSection, setCurrentSection] = useState<string>("hero");
   const [showTips, setShowTips] = useState(false);
 
   // Smooth scroll to section
@@ -27,27 +28,42 @@ const Index = () => {
     }
   };
 
-  // Handle scroll events for section visibility
+  // Handle scroll events for section visibility with improved logic
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["itinerary7", "itinerary9", "itinerary11"];
-      const currentPos = window.scrollY + window.innerHeight / 2;
+      const sections = ["hero", "itinerary7", "itinerary9", "itinerary11"];
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Check if we're near the bottom of the page
+      if (scrollPosition + windowHeight >= documentHeight - 100) {
+        setCurrentSection("itinerary11");
+        return;
+      }
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (currentPos >= offsetTop && currentPos <= offsetTop + offsetHeight) {
-            setCurrentSection(sectionId);
+          const sectionCenter = offsetTop + offsetHeight / 2;
+          const viewportCenter = scrollPosition + windowHeight / 2;
+
+          // Use a more generous range for section detection
+          if (Math.abs(viewportCenter - sectionCenter) < offsetHeight / 2 + windowHeight / 4) {
+            if (currentSection !== sectionId) {
+              setCurrentSection(sectionId);
+            }
             break;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentSection]);
 
   // Reveal animation for elements on scroll
   useEffect(() => {
@@ -59,7 +75,10 @@ const Index = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.1,
+        rootMargin: "50px 0px -50px 0px"
+      }
     );
 
     const revealElements = document.querySelectorAll(".reveal");
@@ -73,7 +92,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <ScotlandHero onNavigate={navigateToSection} />
+      <div id="hero">
+        <ScotlandHero onNavigate={navigateToSection} />
+      </div>
 
       {/* Itinerary Sections */}
       <main className="relative">
@@ -87,7 +108,7 @@ const Index = () => {
             title="Ruta de 7 días"
             days={itinerary7Days}
             itinerary="7"
-            isVisible={currentSection === "itinerary7" || currentSection === ""}
+            isVisible={currentSection === "itinerary7"}
           />
 
           <ItinerarySection

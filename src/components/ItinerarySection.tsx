@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, Clock, MapPin, Camera } from "lucide-react";
@@ -31,9 +32,10 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
   return (
     <motion.section
       id={id}
-      className="min-h-screen py-20 px-6 relative"
+      className="py-20 px-6 relative"
+      style={{ minHeight: "100vh" }}
       initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
       {/* Background Pattern */}
@@ -51,7 +53,7 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
         <motion.div
           className="text-center mb-16"
           initial={{ y: -50, opacity: 0 }}
-          animate={{ y: isVisible ? 0 : -50, opacity: isVisible ? 1 : 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="font-celtic text-5xl md:text-6xl text-transparent bg-highland bg-clip-text mb-4">
@@ -61,12 +63,17 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Map */}
+          {/* Map - Fixed position when section is visible */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
-            animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
+            animate={{ 
+              x: 0, 
+              opacity: 1,
+              position: isVisible ? "sticky" : "static",
+              top: isVisible ? "2rem" : "auto"
+            }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="sticky top-8"
+            className="lg:sticky lg:top-8"
           >
             <Card className="bg-card/80 backdrop-blur-sm shadow-highland">
               <CardHeader>
@@ -91,18 +98,18 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
             </Card>
           </motion.div>
 
-          {/* Days List */}
+          {/* Days List with improved animations */}
           <motion.div
             className="space-y-4"
             initial={{ x: 100, opacity: 0 }}
-            animate={{ x: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             {days.map((day, index) => (
               <motion.div
                 key={index}
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isVisible ? 0 : 20, opacity: isVisible ? 1 : 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               >
                 <Card className="bg-card/60 backdrop-blur-sm border-border/50 shadow-mist hover:shadow-highland transition-celtic">
