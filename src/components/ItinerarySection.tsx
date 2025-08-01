@@ -160,7 +160,9 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                     <img 
                       src={
                         // Use specific uploaded images for certain days
-                        (itinerary === "7" && index === 5) 
+                        (itinerary === "7" && index === 0) 
+                          ? "/lovable-uploads/94b4d4d1-b283-4052-a68d-66aa7ee9a596.png" // Edinburgh street for day 1
+                        : (itinerary === "7" && index === 5) 
                           ? "/lovable-uploads/4fc63d11-cc21-4955-b981-c902ab20b663.png" // Old Man of Storr for day 6
                         : (itinerary === "7" && index === 4) ||
                           (itinerary === "9" && (index === 5 || index === 6)) ||
