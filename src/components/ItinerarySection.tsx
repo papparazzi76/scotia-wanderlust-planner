@@ -158,7 +158,14 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                   {/* Image placeholder */}
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
                     <img 
-                      src={`https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`}
+                      src={
+                        // Use uploaded image for Skye/coastal town days (days 5-6 in 7-day, 6-7 in 9-day, 7-8 in 11-day)
+                        (itinerary === "7" && (index === 4 || index === 5)) ||
+                        (itinerary === "9" && (index === 5 || index === 6)) ||
+                        (itinerary === "11" && (index === 6 || index === 7))
+                          ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png"
+                          : `https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`
+                      }
                       alt={`${day.title} - Paisaje escocés`}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                       loading="lazy"
