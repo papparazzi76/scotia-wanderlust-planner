@@ -172,8 +172,23 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                           ? "/lovable-uploads/4fc63d11-cc21-4955-b981-c902ab20b663.png" // Old Man of Storr for day 6
                         : (itinerary === "7" && index === 6)
                           ? "/lovable-uploads/fbc0914d-9cc5-477b-9686-fedb198a681b.png" // Loch Ness castle for day 7
+                        : (itinerary === "9" && index === 0)
+                          ? "/lovable-uploads/5965f3bc-f71c-4dec-8fcb-0e57be56c7e4.png" // Edinburgh street for day 1
+                        : (itinerary === "9" && index === 1)
+                          ? "/lovable-uploads/41c54777-0e45-4986-9dc5-ffb6d4b75865.png" // Coastal village for day 2
+                        : (itinerary === "9" && index === 2)
+                          ? "/lovable-uploads/929125ab-07b3-47da-89da-1a208b6febcc.png" // Whisky distillery for day 3
+                        : (itinerary === "9" && index === 3)
+                          ? "/lovable-uploads/859763d9-961f-41a4-83d4-d7d1c8591ebf.png" // Lakeside town for day 4
+                        : (itinerary === "9" && index === 4)
+                          ? "/lovable-uploads/c20795c3-42d3-4150-8d18-fda8c2111ffb.png" // Eilean Donan Castle for day 5
+                        : (itinerary === "9" && index === 5)
+                          ? "/lovable-uploads/8d6a32f1-2615-4add-a870-35bbc412764b.png" // Old Man of Storr for day 6
+                        : (itinerary === "9" && index === 6)
+                          ? "/lovable-uploads/6e271ad0-7cf7-48ca-a7e4-3d5a9dc40cac.png" // Fairy Pools for day 7
+                        : (itinerary === "9" && index === 7)
+                          ? "/lovable-uploads/13b39274-4947-464a-9629-9208fc3dabd3.png" // Highland cottages for day 8
                         : (itinerary === "7" && index === 4) ||
-                          (itinerary === "9" && (index === 5 || index === 6)) ||
                           (itinerary === "11" && (index === 6 || index === 7))
                           ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png" // Portree village
                           : `https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`
