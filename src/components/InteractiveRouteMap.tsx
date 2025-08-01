@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { MapPin, Mountain, Navigation } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
-interface ScotlandMapProps {
+interface InteractiveRouteMapProps {
   itinerary: "7" | "9" | "11";
 }
 
-const mapRoutes = {
+const routeData = {
   "7": {
     center: "Highlands Centrales",
     points: [
@@ -45,16 +44,19 @@ const mapRoutes = {
   },
 };
 
-const ScotlandMap = ({ itinerary }: ScotlandMapProps) => {
+const InteractiveRouteMap = ({ itinerary }: InteractiveRouteMapProps) => {
   const [selectedPoint, setSelectedPoint] = useState<number>(0);
-  const route = mapRoutes[itinerary];
+  const route = routeData[itinerary];
 
   useEffect(() => {
+    console.log("InteractiveRouteMap mounted successfully");
     const interval = setInterval(() => {
       setSelectedPoint((prev) => (prev + 1) % route.points.length);
     }, 3000);
     return () => clearInterval(interval);
   }, [route.points.length]);
+
+  console.log("Rendering InteractiveRouteMap", { itinerary, selectedPoint });
 
   return (
     <div className="w-full h-96 rounded-lg overflow-hidden shadow-highland border border-border celtic-border bg-highland/5 relative">
@@ -138,4 +140,4 @@ const ScotlandMap = ({ itinerary }: ScotlandMapProps) => {
   );
 };
 
-export default ScotlandMap;
+export default InteractiveRouteMap;

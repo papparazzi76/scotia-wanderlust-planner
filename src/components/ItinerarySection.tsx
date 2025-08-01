@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ChevronDown, Clock, MapPin, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ScotlandMap from "./ScotlandMap";
+import InteractiveRouteMap from "./InteractiveRouteMap";
 import celticPattern from "@/assets/celtic-pattern.jpg";
 
 interface Day {
@@ -76,7 +76,7 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ScotlandMap itinerary={itinerary} />
+                <InteractiveRouteMap itinerary={itinerary} />
                 <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
