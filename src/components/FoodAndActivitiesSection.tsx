@@ -404,44 +404,47 @@ const FoodAndActivitiesSection = () => {
             Actividades y Pases con Descuento
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {activities.map((activity, index) => (
               <motion.div
                 key={index}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                className="h-full"
               >
-                <Card className="bg-card/60 backdrop-blur-sm border-border/50 shadow-mist hover:shadow-highland transition-celtic h-full">
+                <Card className="bg-card/60 backdrop-blur-sm border-border/50 shadow-mist hover:shadow-highland transition-celtic h-full flex flex-col min-h-[320px]">
                   <CardHeader>
                     <CardTitle className="font-cinzel text-lg text-primary flex items-center gap-2">
                       <activity.icon className="h-5 w-5 text-highland" />
                       {activity.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="flex flex-col justify-between h-full">
-                    <div>
+                  <CardContent className="flex flex-col justify-between h-full flex-grow p-6">
+                    <div className="flex-grow">
                       <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                         {activity.description}
                       </p>
-                      <p className="text-highland font-semibold text-lg mb-4">
+                      <p className="text-highland font-semibold text-lg mb-6">
                         {activity.price}
                       </p>
                     </div>
-                    <Button 
-                      asChild 
-                      className="bg-highland hover:bg-highland/80 text-primary-foreground w-full group"
-                    >
-                      <a 
-                        href={activity.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center"
+                    <div className="mt-auto">
+                      <Button 
+                        asChild 
+                        className="bg-highland hover:bg-highland/80 text-primary-foreground w-full group"
                       >
-                        Reservar Ahora
-                        <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-celtic" />
-                      </a>
-                    </Button>
+                        <a 
+                          href={activity.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center"
+                        >
+                          Reservar Ahora
+                          <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-celtic" />
+                        </a>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
