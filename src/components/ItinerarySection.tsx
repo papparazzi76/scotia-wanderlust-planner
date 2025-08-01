@@ -188,8 +188,29 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                           ? "/lovable-uploads/6e271ad0-7cf7-48ca-a7e4-3d5a9dc40cac.png" // Fairy Pools for day 7
                         : (itinerary === "9" && index === 7)
                           ? "/lovable-uploads/13b39274-4947-464a-9629-9208fc3dabd3.png" // Highland cottages for day 8
-                        : (itinerary === "7" && index === 4) ||
-                          (itinerary === "11" && (index === 6 || index === 7))
+                        : (itinerary === "11" && index === 0)
+                          ? "/lovable-uploads/c3323983-aaa1-4451-a68c-8a5b4d83cb38.png" // Palace gates for day 1
+                        : (itinerary === "11" && index === 1)
+                          ? "/lovable-uploads/72f8bd91-2ad7-4883-b13f-d93ef532d2e8.png" // Monument tower for day 2
+                        : (itinerary === "11" && index === 2)
+                          ? "/lovable-uploads/b3db5695-a89e-46a9-8904-3e001629c0c4.png" // Coastal castle for day 3
+                        : (itinerary === "11" && index === 3)
+                          ? "/lovable-uploads/787ac43d-f585-42ff-8466-6d87a9e88a5e.png" // Highland road for day 4
+                        : (itinerary === "11" && index === 4)
+                          ? "/lovable-uploads/bb9410a9-7abe-4df2-a6ad-8b7c462d627d.png" // Stone circle for day 5
+                        : (itinerary === "11" && index === 5)
+                          ? "/lovable-uploads/06011578-3cba-4c41-b4aa-9157d99222cf.png" // Castle on loch for day 6
+                        : (itinerary === "11" && index === 6)
+                          ? "/lovable-uploads/479a36ba-9ca0-490f-8f32-a4bfb8d72057.png" // Mountain valley for day 7
+                        : (itinerary === "11" && index === 7)
+                          ? "/lovable-uploads/7e8ebeba-5eb2-4909-8cd4-f945a9a9be02.png" // Lighthouse cliffs for day 8
+                        : (itinerary === "11" && index === 8)
+                          ? "/lovable-uploads/8c0d6f33-2fef-4641-9e52-837b41b33598.png" // Colorful coastal town for day 9
+                        : (itinerary === "11" && index === 9)
+                          ? "/lovable-uploads/06fd99ad-481d-4c43-8dac-27c150de8954.png" // Abbey monastery for day 10
+                        : (itinerary === "11" && index === 10)
+                          ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png" // Portree village for day 11
+                        : (itinerary === "7" && index === 4)
                           ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png" // Portree village
                           : `https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`
                       }
