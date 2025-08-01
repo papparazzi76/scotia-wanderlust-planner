@@ -159,11 +159,13 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
                     <img 
                       src={
-                        // Use uploaded image for Skye/coastal town days (days 5-6 in 7-day, 6-7 in 9-day, 7-8 in 11-day)
-                        (itinerary === "7" && (index === 4 || index === 5)) ||
-                        (itinerary === "9" && (index === 5 || index === 6)) ||
-                        (itinerary === "11" && (index === 6 || index === 7))
-                          ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png"
+                        // Use specific uploaded images for certain days
+                        (itinerary === "7" && index === 5) 
+                          ? "/lovable-uploads/4fc63d11-cc21-4955-b981-c902ab20b663.png" // Old Man of Storr for day 6
+                        : (itinerary === "7" && index === 4) ||
+                          (itinerary === "9" && (index === 5 || index === 6)) ||
+                          (itinerary === "11" && (index === 6 || index === 7))
+                          ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png" // Portree village
                           : `https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`
                       }
                       alt={`${day.title} - Paisaje escocés`}
