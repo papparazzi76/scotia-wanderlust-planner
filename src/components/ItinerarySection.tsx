@@ -214,9 +214,10 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                           ? "/lovable-uploads/ab261f3a-439c-4313-9a65-0427fe301f2b.png" // Portree village
                           : `https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`
                       }
-                      alt={`${day.title} - Paisaje escocés`}
+                      alt={`${day.title} - Guía de viaje día ${index + 1} en Escocia: ${day.description.slice(0, 100)}...`}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      loading="lazy"
+                      loading={index < 2 ? "eager" : "lazy"}
+                      title={`Día ${index + 1}: ${day.title} - Itinerario ${itinerary} días por Escocia`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">

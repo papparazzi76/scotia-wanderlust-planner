@@ -12,3 +12,20 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://escocia-eterna.lovable.app/sitemap.xml
+
+# Optimized for travel and tourism content
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot  
+Allow: /
+Crawl-delay: 1
+
+# Block unnecessary crawling
+Disallow: /_astro/
+Disallow: /node_modules/
+Disallow: /src/

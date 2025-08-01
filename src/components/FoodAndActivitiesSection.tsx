@@ -401,7 +401,7 @@ const FoodAndActivitiesSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <h3 className="font-cinzel text-3xl text-primary mb-8 text-center">
-            Actividades y Pases con Descuento
+            Tours por Escocia, Pases con Descuento y Actividades en Highlands
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">

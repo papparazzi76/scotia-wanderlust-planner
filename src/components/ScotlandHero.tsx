@@ -14,7 +14,7 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
       <div className="absolute inset-0">
         <img 
           src={heroImage} 
-          alt="Scottish Highlands" 
+          alt="Guía de viaje por los Highlands de Escocia - Paisajes espectaculares de montañas, lagos y castillos celtas para tu viaje perfecto a Escocia" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/80" />
@@ -145,6 +145,22 @@ const ScotlandHero = ({ onNavigate }: ScotlandHeroProps) => {
         >
           <div className="w-1 h-16 bg-gradient-to-b from-transparent via-accent to-transparent rounded-full" />
         </motion.div>
+
+        {/* SEO Content - Hidden but accessible to crawlers */}
+        <div className="sr-only">
+          <h2>Guías Completas de Viaje por Escocia</h2>
+          <p>Descubre los mejores itinerarios para viajar a Escocia: explora los Highlands escoceses, la misteriosa Isla de Skye, la histórica Edimburgo con su castillo medieval, y los lagos legendarios como Loch Ness. Nuestras guías incluyen rutas de 7, 9 y 11 días con recomendaciones de restaurantes, pubs tradicionales, actividades con descuento y consejos prácticos para tu viaje perfecto a Escocia.</p>
+          <ul>
+            <li>Itinerario de 7 días: Edimburgo, Highlands e Isla de Skye</li>
+            <li>Itinerario de 9 días: Ruta extendida con más tiempo en cada destino</li>
+            <li>Itinerario de 11 días: Tour completo incluyendo islas y costa oeste</li>
+            <li>Mejores restaurantes en Edimburgo: The Witchery, Oink, Deacon's House</li>
+            <li>Pubs tradicionales: Greyfriars Bobby, The Bow Bar, Sandy Bell's</li>
+            <li>Actividades en Highlands: Highland Tours, Whisky Experience, fotografía</li>
+            <li>Isla de Skye: Old Man of Storr, Fairy Pools, Portree</li>
+            <li>Castillos escoceses: Edinburgh Castle, Eilean Donan, Dunnottar</li>
+          </ul>
+        </div>
       </div>
     </section>
   );
