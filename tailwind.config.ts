@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'celtic': ['Uncial Antiqua', 'serif'],
+				'cinzel': ['Cinzel', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -26,7 +31,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,6 +58,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'celtic-emerald': {
+					DEFAULT: 'hsl(var(--celtic-emerald))',
+					foreground: 'hsl(var(--celtic-emerald-foreground))'
+				},
+				'highland-blue': {
+					DEFAULT: 'hsl(var(--highland-blue))',
+					foreground: 'hsl(var(--highland-blue-foreground))'
+				},
+				'tartan-red': {
+					DEFAULT: 'hsl(var(--tartan-red))',
+					foreground: 'hsl(var(--tartan-red-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +80,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'highland': 'var(--gradient-highland)',
+				'mist': 'var(--gradient-mist)',
+				'sunset': 'var(--gradient-sunset)',
+				'loch': 'var(--gradient-loch)',
+			},
+			boxShadow: {
+				'highland': 'var(--shadow-highland)',
+				'mist': 'var(--shadow-mist)',
+				'glow': 'var(--shadow-glow)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
