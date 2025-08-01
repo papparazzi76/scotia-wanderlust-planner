@@ -30,6 +30,36 @@ const FoodAndActivitiesSection = () => {
           type: "Marisquería",
           description: "Los mejores mariscos frescos de Escocia en pleno corazón de la ciudad.",
           highlight: "Ostras frescas y salmón ahumado"
+        },
+        {
+          name: "Oink",
+          type: "Street Food",
+          description: "Legendario puesto de pulled pork con cerdos asados lentamente, una institución de Edimburgo.",
+          highlight: "El mejor pulled pork roll de Escocia"
+        },
+        {
+          name: "The Scran & Scallie",
+          type: "Gastropub",
+          description: "Gastropub del chef Tom Kitchin con cocina escocesa moderna y ambiente relajado.",
+          highlight: "Ingredientes locales de temporada"
+        },
+        {
+          name: "Amber Restaurant",
+          type: "Whisky & Food",
+          description: "Restaurante especializado en maridajes de whisky escocés con cocina contemporánea.",
+          highlight: "Más de 350 whiskies escoceses"
+        },
+        {
+          name: "Fishers in the City",
+          type: "Mariscos",
+          description: "Marisquería familiar con pescado fresco diario y ambiente marítimo auténtico.",
+          highlight: "Mejillones escoceses y fish & chips"
+        },
+        {
+          name: "The Elephant House",
+          type: "Café Histórico",
+          description: "Café donde J.K. Rowling escribió parte de Harry Potter, con vistas al castillo.",
+          highlight: "Café literario con historia mágica"
         }
       ],
       pubs: [
@@ -50,6 +80,36 @@ const FoodAndActivitiesSection = () => {
           type: "Pub Histórico",
           description: "El pub más pequeño de Edimburgo con gran personalidad.",
           highlight: "Ambiente íntimo y cerveza local"
+        },
+        {
+          name: "Greyfriars Bobby's Bar",
+          type: "Pub Legendario",
+          description: "Pub nombrado en honor al famoso perro leal, cerca del cementerio de Greyfriars.",
+          highlight: "Historia conmovedora y ambiente auténtico"
+        },
+        {
+          name: "The Beehive Inn",
+          type: "Pub Tradicional",
+          description: "Pub histórico de Grassmarket con más de 400 años de historia.",
+          highlight: "Uno de los pubs más antiguos de Edimburgo"
+        },
+        {
+          name: "Deacon's House",
+          type: "Whisky & Gin",
+          description: "Bar de cócteles en un edificio del siglo XVI con extensa carta de ginebras.",
+          highlight: "Gin escocés artesanal y cócteles únicos"
+        },
+        {
+          name: "The Kenilworth",
+          type: "Pub Victoriano",
+          description: "Pub victoriano perfectamente conservado con decoración original intacta.",
+          highlight: "Arquitectura victoriana auténtica"
+        },
+        {
+          name: "Jolly Judge",
+          type: "Pub Oculto",
+          description: "Pub secreto en un estrecho callejón cerca del castillo, favorito de los locales.",
+          highlight: "Ubicación secreta y ambiente acogedor"
         }
       ]
     },
@@ -73,6 +133,36 @@ const FoodAndActivitiesSection = () => {
           type: "Bistro Local",
           description: "Favorito local con cocina casera y productos regionales.",
           highlight: "Desayuno escocés completo y dulces caseros"
+        },
+        {
+          name: "River House Restaurant",
+          type: "Fine Dining",
+          description: "Elegante restaurante junto al río con cocina escocesa contemporánea.",
+          highlight: "Salmón del río Ness y cordero de las Highlands"
+        },
+        {
+          name: "The Kitchen Brasserie",
+          type: "Brasserie",
+          description: "Brasserie moderna con ingredientes frescos de las Highlands y costa oeste.",
+          highlight: "Mariscos de la isla de Skye"
+        },
+        {
+          name: "Aspendos",
+          type: "Turco",
+          description: "Auténtica cocina turca en el corazón de Inverness, sorprendentemente popular entre locales.",
+          highlight: "Kebabs caseros y baklava tradicional"
+        },
+        {
+          name: "Dores Inn",
+          type: "Pub Restaurant",
+          description: "Pub restaurant histórico con vistas espectaculares al Loch Ness.",
+          highlight: "Vista directa al lago y leyenda del monstruo"
+        },
+        {
+          name: "The Fig & Thistle",
+          type: "Gastropub",
+          description: "Gastropub acogedor con cocina escocesa moderna y cervezas artesanales.",
+          highlight: "Haggis reinventado y cervezas locales"
         }
       ],
       pubs: [
@@ -93,6 +183,36 @@ const FoodAndActivitiesSection = () => {
           type: "Pub Histórico",
           description: "Pub tradicional con vistas al castillo de Inverness.",
           highlight: "Whiskies locales y ambiente acogedor"
+        },
+        {
+          name: "MacGregors",
+          type: "Whisky Bar",
+          description: "Bar especializado en whiskies de las Highlands con más de 200 variedades.",
+          highlight: "Whiskies raros de destilerías locales"
+        },
+        {
+          name: "The Gellions",
+          type: "Pub Riverside",
+          description: "Pub histórico junto al río con terraza y ambiente relajado.",
+          highlight: "Terraza con vistas al río Ness"
+        },
+        {
+          name: "Johnny Foxes",
+          type: "Pub Irlandés",
+          description: "Auténtico pub irlandés con música tradicional y ambiente festivo.",
+          highlight: "Música celta en vivo los fines de semana"
+        },
+        {
+          name: "The Waterfront",
+          type: "Bar Moderno",
+          description: "Bar contemporáneo en el centro con cócteles creativos y ambiente cosmopolita.",
+          highlight: "Cócteles con gin escocés artesanal"
+        },
+        {
+          name: "Clachnaharry Inn",
+          type: "Pub de Canal",
+          description: "Pub pintoresco junto al canal Caledonian con historia marítima.",
+          highlight: "Ubicación única junto al canal histórico"
         }
       ]
     }
