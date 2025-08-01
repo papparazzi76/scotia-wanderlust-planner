@@ -170,6 +170,8 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                           ? "/lovable-uploads/928cb6cb-cb1f-4819-a2fb-bb089970568d.png" // Highland road for day 4
                         : (itinerary === "7" && index === 5)
                           ? "/lovable-uploads/4fc63d11-cc21-4955-b981-c902ab20b663.png" // Old Man of Storr for day 6
+                        : (itinerary === "7" && index === 6)
+                          ? "/lovable-uploads/fbc0914d-9cc5-477b-9686-fedb198a681b.png" // Loch Ness castle for day 7
                         : (itinerary === "7" && index === 4) ||
                           (itinerary === "9" && (index === 5 || index === 6)) ||
                           (itinerary === "11" && (index === 6 || index === 7))
