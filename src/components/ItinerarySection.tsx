@@ -29,6 +29,48 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
     setOpenDay(openDay === index ? -1 : index);
   };
 
+  // Function to get specific image IDs for each day and itinerary
+  const getImageId = (dayIndex: number, itinerary: string): string => {
+    const imageMap: Record<string, string[]> = {
+      "7": [
+        "1469474968028-56623f02e42e", // Edinburgh - mountain landscape
+        "1472396961693-142e6e269027", // Castles - deer and mountain
+        "1509316975850-ff9c5deb0cd9", // Stirling - pine trees
+        "1433086966358-54859d0ed716", // Glencoe - bridge and waterfalls
+        "1553978297-87988c982b35", // Road to Skye - highland road
+        "1534055683238-5d4c6e5faee5", // Skye peninsula - dramatic cliffs
+        "1522199755839-a2bacb67c546" // Loch Ness - mysterious lake
+      ],
+      "9": [
+        "1469474968028-56623f02e42e", // Edinburgh extended
+        "1472396961693-142e6e269027", // Edinburgh museums
+        "1509316975850-ff9c5deb0cd9", // Stirling and Fife coast
+        "1434271849903-d8e8c5ba4b6e", // Cairngorms and Speyside
+        "1433086966358-54859d0ed716", // Inverness
+        "1553978297-87988c982b35", // Road to Skye
+        "1534055683238-5d4c6e5faee5", // North Skye
+        "1522199755839-a2bacb67c546", // Fairy Pools and Talisker
+        "1467987506553-8f3916c7a4a7" // Return via Glencoe
+      ],
+      "11": [
+        "1469474968028-56623f02e42e", // Edinburgh complete
+        "1472396961693-142e6e269027", // Edinburgh splendid
+        "1509316975850-ff9c5deb0cd9", // Stirling and Bannockburn
+        "1434271849903-d8e8c5ba4b6e", // Towards Highlands
+        "1553978297-87988c982b35", // North Coast 500 start
+        "1433086966358-54859d0ed716", // Wester Ross to Ullapool
+        "1534055683238-5d4c6e5faee5", // Ullapool to Skye
+        "1522199755839-a2bacb67c546", // North Skye calm
+        "1467987506553-8f3916c7a4a7", // Fairy Pools complete
+        "1506905925346-9c3a2f3b8d8a", // Ferry to Mull
+        "1441974231531-c6227db76b6e" // Mull, Iona and return
+      ]
+    };
+
+    const images = imageMap[itinerary] || imageMap["7"];
+    return images[dayIndex % images.length];
+  };
+
   return (
     <motion.section
       id={id}
@@ -113,15 +155,28 @@ const ItinerarySection = ({ id, title, days, itinerary, isVisible }: ItinerarySe
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               >
                 <Card className="bg-card/60 backdrop-blur-sm border-border/50 shadow-mist hover:shadow-highland transition-celtic">
+                  {/* Image placeholder */}
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img 
+                      src={`https://images.unsplash.com/photo-${getImageId(index, itinerary)}?w=600&h=400&fit=crop&crop=center&auto=format&q=80`}
+                      alt={`${day.title} - Paisaje escocés`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <div className="w-12 h-12 bg-highland/90 backdrop-blur-sm rounded-full flex items-center justify-center text-primary-foreground font-bold shadow-lg">
+                        {index + 1}
+                      </div>
+                    </div>
+                  </div>
+
                   <CardHeader
                     className="cursor-pointer"
                     onClick={() => toggleDay(index)}
                   >
                     <div className="flex items-center justify-between">
-                      <CardTitle className="font-cinzel text-xl text-primary flex items-center gap-3">
-                        <div className="w-12 h-12 bg-highland rounded-full flex items-center justify-center text-primary-foreground font-bold">
-                          {index + 1}
-                        </div>
+                      <CardTitle className="font-cinzel text-xl text-primary">
                         <div>
                           <div className="text-lg">{day.day}</div>
                           <div className="text-base font-normal text-muted-foreground">
