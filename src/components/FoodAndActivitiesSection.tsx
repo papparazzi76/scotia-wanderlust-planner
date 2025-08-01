@@ -213,7 +213,7 @@ const FoodAndActivitiesSection = () => {
                         Restaurantes en {city.name}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-6">
+                    <CardContent className="space-y-8">
                       {city.restaurants.map((restaurant, index) => (
                         <motion.div
                           key={index}
@@ -245,7 +245,7 @@ const FoodAndActivitiesSection = () => {
                         Pubs Tradicionales
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-6">
+                    <CardContent className="space-y-8">
                       {city.pubs.map((pub, index) => (
                         <motion.div
                           key={index}
@@ -284,7 +284,7 @@ const FoodAndActivitiesSection = () => {
             Actividades y Pases con Descuento
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activities.map((activity, index) => (
               <motion.div
                 key={index}
