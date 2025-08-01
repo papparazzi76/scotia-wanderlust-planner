@@ -1,22 +1,7 @@
-import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
-import { Icon } from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-// Fix for default markers in react-leaflet
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import markerRetina from "leaflet/dist/images/marker-icon-2x.png";
-
-const defaultIcon = new Icon({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-  iconRetinaUrl: markerRetina,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+import { useState, useEffect } from "react";
+import { MapPin, Mountain, Navigation } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface ScotlandMapProps {
   itinerary: "7" | "9" | "11";
@@ -24,119 +9,131 @@ interface ScotlandMapProps {
 
 const mapRoutes = {
   "7": {
-    center: [56.4907, -4.2026] as [number, number],
+    center: "Highlands Centrales",
     points: [
-      { lat: 55.9533, lng: -3.1883, name: "Edimburgo", day: "Días 1-2" },
-      { lat: 56.1165, lng: -3.9369, name: "Stirling", day: "Día 3" },
-      { lat: 56.6198, lng: -5.1070, name: "Glencoe", day: "Día 4" },
-      { lat: 57.1497, lng: -6.2180, name: "Isla de Skye", day: "Días 5-6" },
-      { lat: 57.4778, lng: -4.2247, name: "Inverness", day: "Día 7" },
+      { name: "Edimburgo", day: "Días 1-2", description: "Capital histórica" },
+      { name: "Stirling", day: "Día 3", description: "Castillo y monumentos" },
+      { name: "Glencoe", day: "Día 4", description: "Valle dramático" },
+      { name: "Isla de Skye", day: "Días 5-6", description: "Paisajes mágicos" },
+      { name: "Inverness", day: "Día 7", description: "Capital de las Highlands" },
     ],
-    route: [
-      [55.9533, -3.1883],
-      [56.1165, -3.9369],
-      [56.6198, -5.1070],
-      [57.1497, -6.2180],
-      [57.4778, -4.2247],
-    ] as [number, number][],
+    highlights: ["Royal Mile", "Castillo de Stirling", "Old Man of Storr", "Loch Ness"]
   },
   "9": {
-    center: [56.8, -4.5] as [number, number],
+    center: "Highlands Extendidas",
     points: [
-      { lat: 55.9533, lng: -3.1883, name: "Edimburgo", day: "Días 1-2" },
-      { lat: 56.1165, lng: -3.9369, name: "Stirling", day: "Día 3" },
-      { lat: 57.4778, lng: -4.2247, name: "Inverness", day: "Días 4-5" },
-      { lat: 57.1497, lng: -6.2180, name: "Isla de Skye", day: "Días 6-8" },
-      { lat: 56.6198, lng: -5.1070, name: "Glencoe", day: "Día 9" },
+      { name: "Edimburgo", day: "Días 1-2", description: "Exploración profunda" },
+      { name: "Costa de Fife", day: "Día 3", description: "Puertos pesqueros" },
+      { name: "Cairngorms", day: "Día 4", description: "Destilerías de whisky" },
+      { name: "Inverness", day: "Día 5", description: "Capital Highland" },
+      { name: "Isla de Skye", day: "Días 6-8", description: "Aventura completa" },
+      { name: "Glencoe", day: "Día 9", description: "Regreso épico" },
     ],
-    route: [
-      [55.9533, -3.1883],
-      [56.1165, -3.9369],
-      [57.4778, -4.2247],
-      [57.1497, -6.2180],
-      [56.6198, -5.1070],
-      [55.9533, -3.1883],
-    ] as [number, number][],
+    highlights: ["Dean Village", "Speyside", "Fairy Pools", "Neist Point"]
   },
   "11": {
-    center: [57.2, -5.0] as [number, number],
+    center: "Gran Tour Escocés",
     points: [
-      { lat: 55.9533, lng: -3.1883, name: "Edimburgo", day: "Días 1-2" },
-      { lat: 56.1165, lng: -3.9369, name: "Stirling", day: "Día 3" },
-      { lat: 57.4778, lng: -4.2247, name: "Inverness", day: "Días 4-5" },
-      { lat: 57.8, lng: -5.8, name: "North Coast 500", day: "Días 5-7" },
-      { lat: 57.1497, lng: -6.2180, name: "Isla de Skye", day: "Días 7-9" },
-      { lat: 56.6151, lng: -6.0515, name: "Isla de Mull", day: "Días 10-11" },
+      { name: "Edimburgo", day: "Días 1-2", description: "Base perfecta" },
+      { name: "Stirling", day: "Día 3", description: "Historia escocesa" },
+      { name: "Cairngorms", day: "Día 4", description: "Hacia las Highlands" },
+      { name: "North Coast 500", day: "Días 5-6", description: "Ruta legendaria" },
+      { name: "Isla de Skye", day: "Días 7-9", description: "Paraíso natural" },
+      { name: "Isla de Mull", day: "Días 10-11", description: "Aventura isleña" },
     ],
-    route: [
-      [55.9533, -3.1883],
-      [56.1165, -3.9369],
-      [57.4778, -4.2247],
-      [57.8, -5.8],
-      [57.1497, -6.2180],
-      [56.6151, -6.0515],
-      [56.6198, -5.1070],
-      [55.9533, -3.1883],
-    ] as [number, number][],
+    highlights: ["Bannockburn", "Bealach na Bà", "Tobermory", "Iona"]
   },
 };
 
 const ScotlandMap = ({ itinerary }: ScotlandMapProps) => {
+  const [selectedPoint, setSelectedPoint] = useState<number>(0);
   const route = mapRoutes[itinerary];
 
   useEffect(() => {
-    // Fix for Leaflet icons in webpack
-    delete (Icon.Default.prototype as any)._getIconUrl;
-    Icon.Default.mergeOptions({
-      iconRetinaUrl: markerRetina,
-      iconUrl: markerIcon,
-      shadowUrl: markerShadow,
-    });
-  }, []);
+    const interval = setInterval(() => {
+      setSelectedPoint((prev) => (prev + 1) % route.points.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [route.points.length]);
 
   return (
-    <div className="w-full h-96 rounded-lg overflow-hidden shadow-highland border border-border celtic-border">
-      <MapContainer
-        center={route.center}
-        zoom={7}
-        className="w-full h-full"
-        zoomControl={true}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        
-        {/* Route Line */}
-        <Polyline
-          positions={route.route}
-          pathOptions={{
-            color: "#4ade80",
-            weight: 4,
-            opacity: 0.8,
-            dashArray: "10, 10",
-          }}
-        />
-        
-        {/* Markers */}
-        {route.points.map((point, index) => (
-          <Marker
-            key={index}
-            position={[point.lat, point.lng]}
-            icon={defaultIcon}
-          >
-            <Popup className="font-inter">
-              <div className="text-center">
-                <h3 className="font-cinzel font-semibold text-primary">
-                  {point.name}
-                </h3>
-                <p className="text-sm text-muted-foreground">{point.day}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+    <div className="w-full h-96 rounded-lg overflow-hidden shadow-highland border border-border celtic-border bg-highland/5 relative">
+      {/* Interactive Route Visualization */}
+      <div className="absolute inset-0 p-6">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <h3 className="font-cinzel text-xl text-primary flex items-center justify-center gap-2">
+            <Mountain className="h-5 w-5" />
+            {route.center}
+            <Navigation className="h-5 w-5" />
+          </h3>
+          <p className="text-sm text-muted-foreground">Ruta de {itinerary} días</p>
+        </div>
+
+        {/* Route Points */}
+        <div className="space-y-3 max-h-64 overflow-y-auto">
+          {route.points.map((point, index) => (
+            <Card 
+              key={index}
+              className={`cursor-pointer transition-celtic ${
+                selectedPoint === index 
+                  ? 'bg-highland/20 border-primary shadow-glow' 
+                  : 'bg-card/50 hover:bg-card/80'
+              }`}
+              onClick={() => setSelectedPoint(index)}
+            >
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-celtic ${
+                    selectedPoint === index 
+                      ? 'bg-primary text-primary-foreground' 
+                      : 'bg-muted text-muted-foreground'
+                  }`}>
+                    {index + 1}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-cinzel font-semibold text-foreground">{point.name}</h4>
+                    <p className="text-sm text-muted-foreground">{point.day}</p>
+                    <p className="text-xs text-accent">{point.description}</p>
+                  </div>
+                  <MapPin className={`h-5 w-5 transition-celtic ${
+                    selectedPoint === index ? 'text-primary' : 'text-muted-foreground'
+                  }`} />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Highlights */}
+        <div className="mt-6 pt-4 border-t border-border/50">
+          <h4 className="font-cinzel text-sm text-accent mb-2">Destacados de la ruta:</h4>
+          <div className="flex flex-wrap gap-2">
+            {route.highlights.map((highlight, index) => (
+              <span 
+                key={index}
+                className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+              >
+                {highlight}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+          <div className="flex gap-1">
+            {route.points.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-celtic ${
+                  selectedPoint === index ? 'bg-primary' : 'bg-muted'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
